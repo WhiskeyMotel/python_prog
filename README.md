@@ -5,12 +5,16 @@ The most retarded Python git ever!
 #HELP FOR NOOBIES!!! GITHUB HINT
         git add "file"/"folder"/* 	
 mark file/folder that send to repo
+
         git commit -m "text" 
 commit the file
+
         git push
 upload to repo
+
         git commit -am "text" 
 commit deleted file
+
         git status 
 useful to check which files you marked
 
