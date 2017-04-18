@@ -1,7 +1,6 @@
 # Практическая работа
 
 #### Задание 1: Скачайте файл с данными о погибших на титанике
-import requests
 import os
 
 def to_str(lines):
@@ -147,7 +146,7 @@ def group_age(tit_data):
             adults += 1
         elif person['age'] != 'NA' and float(person['age'])>=18:
             old_person += 1
-    print ('Childrens: ', children, 'Teenagers: ', adults, 'Adults: ', old_person)
+    print ('Children: ', children, 'Teenagers: ', adults, 'Adults: ', old_person)
 
 group_age(titanic_data)
 #### Задание 8: Сколько в каждой группе выживших
@@ -162,7 +161,7 @@ def surv_group_age(tit_data):
             adults += 1
         elif person['age'] != 'NA' and float(person['age'])>=18 and person['survived'] == '1':
             old_person += 1
-    print ('Childrens: ', children, 'Teenagers: ', adults, 'Adults: ', old_person)
+    print ('Children: ', children, 'Teenagers: ', adults, 'Adults: ', old_person)
 
 surv_group_age(titanic_data)
 #### Задание 9: Сколько в каждой группе выживших по отдельности для
@@ -175,18 +174,22 @@ def surv_group_age_by_sex(tit_data):
     old_m = 0
     old_w = 0
     for person in tit_data:
-        if person['age'] != 'NA' and float(person['age'])<14 and person['survived'] == '1' and person['sex'] == 'male':
-            children_m += 1
-        if person['age'] != 'NA' and float(person['age'])<14 and person['survived'] == '1' and person['sex'] == 'female':
-            children_f += 1
-        elif person['age'] != 'NA' and 14<=float(person['age'])<18 and person['survived'] == '1' and person['sex'] == 'male':
-            adults_m += 1
-        elif person['age'] != 'NA' and 14<=float(person['age'])<18 and person['survived'] == '1' and person['sex'] == 'female':
-            adults_w += 1
-        elif person['age'] != 'NA' and float(person['age'])>=18 and person['survived'] == '1' and person['sex'] == 'male':
-            old_m += 1
-        elif person['age'] != 'NA' and float(person['age'])>=18 and person['survived'] == '1' and person['sex'] == 'female':
-            old_w += 1
+        if person['age'] != 'NA':
+            if person['survived'] == '1':
+                if person['sex'] == 'male':
+                    if float(person['age'])<14:
+                        children_m +=1
+                    elif 14<=float(person['age'])<18:
+                        adults_m +=1
+                    elif float(person['age'])>=18:
+                        old_m +=1
+                elif person['sex'] == 'female':
+                    if float(person['age'])<14:
+                        children_f +=1
+                    elif 14<=float(person['age'])<18:
+                        adults_w +=1
+                    elif float(person['age'])>=18:
+                        old_w +=1
     print ('Survived:\nfemale Children=', children_f, '\nmale children=', children_m, '\nfemale Teenagers=', adults_w, '\nmale teenagers=', adults_m, '\nfemale Adults=', old_w, '\nmale adults=', old_m)
 
 surv_group_age_by_sex(titanic_data)
