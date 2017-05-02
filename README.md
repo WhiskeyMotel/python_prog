@@ -7,6 +7,8 @@ The most retarded Python git ever!
 
 25.04.17 - added some labs and basic version of Coursera (don't know, will it work or not)
 
+02.05.17 - added 2/3 of first lab
+
 # HELP FOR NOOBIES!!! GITHUB HINT
 	
 1. mark file/folder that send to repo
