@@ -11,28 +11,17 @@ def find_number_letter(letter):
         if letter==Alphabet_small[i]:
             return int(i)
 
-def find_letter(number):
-    Alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-                'V', 'W', 'X', 'Y', 'Z']
-    if number>26:
-        for i in range(26):
-            if (number-26) == i:
-                return str(Alphabet[i])
-    elif number<0:
-        for i in range(26):
-            if abs(number) == i:
-                return str(Alphabet[i])
-    else:
-        for i in range (26):
-            if number==i:
-                return str(Alphabet[i])
-
 def encrypt_vigenere(plaintext, keyword):
     while len(keyword)<len(plaintext):
         keyword+=keyword
     ciphertext=str()
     for i in range (len(plaintext)):
-        ciphertext+=str(find_letter(find_number_letter(plaintext[i])+find_number_letter(keyword[i])))
+        if 91<=(ord(plaintext[i])+find_number_letter(keyword[i]))<97:
+            ciphertext+=chr(64+(ord(plaintext[i])+find_number_letter(keyword[i]))-90)
+        elif (ord(plaintext[i])+find_number_letter(keyword[i]))>122:
+            ciphertext += chr(96 + (ord(plaintext[i]) + find_number_letter(keyword[i])) - 122)
+        else:
+            ciphertext+=chr(ord(plaintext[i])+find_number_letter(keyword[i]))
     return ciphertext
 
 print(encrypt_vigenere('MASHA', 'CA'))
@@ -43,7 +32,13 @@ def decrypt_vigenere(ciphertext, keyword):
         keyword+=keyword
     plaintext=str()
     for i in range (len(ciphertext)):
-        plaintext+=str(find_letter(find_number_letter(ciphertext[i])-find_number_letter(keyword[i])))
+        if ord(ciphertext[i])-find_number_letter(keyword[i])<65:
+            plaintext+=chr(91-(65-(ord(ciphertext[i])-find_number_letter(keyword[i]))))
+        elif 90<ord(ciphertext[i])-find_number_letter(keyword[i])<97:
+            plaintext+=chr(123-(97-(ord(ciphertext[i])-find_number_letter(keyword[i]))))
+        else:
+            plaintext+=chr(ord(ciphertext[i])-find_number_letter(keyword[i]))
     return plaintext
 
 print(decrypt_vigenere('OAUHC','CA'))
+print(decrypt_vigenere('oauhc','ca'))
