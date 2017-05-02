@@ -28,5 +28,3 @@ The most retarded Python git ever!
 5. useful to check which files you marked
 
         git status 
-
-Have some troubles with uploading? Use repo_init.exe from my c_prog repo (64 bit only, in Russian)
