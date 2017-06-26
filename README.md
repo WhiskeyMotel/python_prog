@@ -9,6 +9,8 @@ The most retarded Python git ever!
 
 02.05.17 - added 2/3 of first lab
 
+26.06.17 - Oh God, forgot about updating. Everything was reuploaded. All's bullshit
+
 # HELP FOR NOOBIES!!! GITHUB HINT
 	
 1. mark file/folder that send to repo
