@@ -9,7 +9,7 @@ def encrypt_caesar(plaintext, shift):
             ciphertext+=chr(ord(plaintext[i])+shift)
     return ciphertext
 
-print(encrypt_caesar("HER", 4))
+print(encrypt_caesar('FREELOVE', 4))
 print(encrypt_caesar("python",4))
 print(encrypt_caesar("",3))
 
@@ -24,6 +24,6 @@ def decrypt_caesar(ciphertext,shift):
             plaintext+=chr(ord(ciphertext[i])-shift)
     return plaintext
 
-print(decrypt_caesar("LIV",4))
-print(decrypt_caesar("sbwkrq",3))
+print(decrypt_caesar("JVIIPSZI",4))
+print(decrypt_caesar("tcxlsr",3))
 print(decrypt_caesar("",3))

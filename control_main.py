@@ -61,3 +61,4 @@ class Course:
             return self.ta_list
     def course_start(self):
         self.run = 'true'
+

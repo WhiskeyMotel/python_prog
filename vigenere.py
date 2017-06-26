@@ -2,13 +2,9 @@ def find_number_letter(letter):
     Alphabet_big = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
                 'V', 'W', 'X', 'Y', 'Z']
     Alphabet_small = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-                    'u',
-                    'v', 'w', 'x', 'y', 'z']
+                    'u','v', 'w', 'x', 'y', 'z']
     for i in range (26):
-        if letter==Alphabet_big[i]:
-            return int(i)
-    for i in range (26):
-        if letter==Alphabet_small[i]:
+        if letter==Alphabet_big[i] or letter==Alphabet_small[i]:
             return int(i)
 
 def encrypt_vigenere(plaintext, keyword):

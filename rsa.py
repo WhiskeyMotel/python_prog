@@ -6,23 +6,11 @@ def is_prime(n):
     for i in range (2,n-1):
         if n%i==0: ##если число делится без остатка,
             return 'False' ##то мы возвращаем False, то есть оно сложное
-            break
     return 'True' ##если нет такого делителя, то возвращаем True, то есть число делится только на 1 и само себя
 
 def gcd(a, b):
-    """
-    Euclid's algorithm for determining the greatest common divisor.
-
-    >>> gcd(12, 15)
-    3
-    >>> gcd(3, 7)
-    1
-    """
-    while a != b:
-        if a>b:
-            a = a-b
-        else:
-            b=b-a
+    while b:
+        a, b = b, a % b
     return a
 
 
@@ -34,15 +22,10 @@ def sub_help(e, phi):
         return d,y,x-y*(e//phi)
 
 def multiplicative_inverse(e, phi):
-    """
-    Euclid's extended algorithm for finding the multiplicative
-    inverse of two numbers.
-
-    >>> multiplicative_inverse(7, 40)
-    23
-    """
     d,x,y = sub_help(e, phi)
     return x%phi
+
+print(multiplicative_inverse(17,13))
 
 def generate_keypair(p, q):
     if is_prime(p)=='False' or is_prime(q)=='False':
@@ -56,7 +39,6 @@ def generate_keypair(p, q):
     # phi = (p-1)(q-1)
     phi = (p-1)*(q-1)
 
-    # Choose an integer e such that e and phi(n) are coprime
     e = random.randrange(1, phi)
 
     # Use Euclid's Algorithm to verify that e and phi(n) are comprime
@@ -70,7 +52,7 @@ def generate_keypair(p, q):
 
     # Return public and private keypair
     # Public key is (e, n) and private key is (d, n)
-    return ((e, n), (d, n))
+    return (e, n), (d, n)
 
 
 def encrypt(pk, plaintext):
@@ -86,9 +68,11 @@ def encrypt(pk, plaintext):
 def decrypt(pk, ciphertext):
     # Unpack the key into its components
     key, n = pk
+    print(ciphertext)
     # Generate the plaintext based on the ciphertext and key using a^b mod m
     plain = [chr((char ** key) % n) for char in ciphertext]
     # Return the array of bytes as a string
+    print(plain)
     return ''.join(plain)
 
 
